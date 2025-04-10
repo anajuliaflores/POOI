@@ -1,0 +1,65 @@
+Aula10/04
+public class Aluno {
+
+    private String nome;
+    private Professor professor;
+    
+    public Aluno(String nome){
+        this.nome = nome;
+       
+    
+}
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    
+}
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Professor {
+    private String nome;
+    private List<Aluno> listaAluno;
+    
+    public Professor (String nome){
+        this.nome = nome;
+        this.listaAluno = new ArrayList<>(); 
+       
+    }
+    
+    public void adicionarAluno(Aluno aluno){
+        this.listaAluno.add(aluno);
+        aluno.setProfessor(this);
+        //System.out.println("Novo aluno: " + listaAluno);
+        
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+ 
+    @Override
+    public String toString() {
+        return "Professor{" + "nome= " + nome + ", listaAluno= " + listaAluno + '}';
+    }
+    
+    
+}
