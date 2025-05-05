@@ -1,0 +1,121 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Aula0505 {
+
+    public static void main(String[] args) {
+       
+        Produto p1 = new Produto("Produto genérico", 150.9);
+        p1.ehCaro();
+        
+        Livro l1 = new Livro ("Pablo", 50, "Café com Deus pai", 500.9);
+        
+        Livro l2 = new Livro ("Alana", 20, "Café com Deus pai", 15);
+
+        
+        Eletronico e1 = new Eletronico(110, "cafeteira", 150);
+        e1.ehCaro();
+        
+        l1.ehGrande(true);
+        
+        List<Produto> listaGenerica = new ArrayList<>();
+        listaGenerica.add(l1);
+        listaGenerica.add(l2);
+        listaGenerica.add(e1);
+        
+        for(Produto p : listaGenerica){
+            System.out.println(p.nome);
+            p.ehCaro(); 
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+public class Livro extends Produto {
+    public String autor;
+    public int paginas;
+    
+    public Livro (String a, int p, String n, double pre){
+        super (n, pre);
+        autor = a;
+        paginas = p;
+        System.out.println("Construtor de produto");
+        
+    }
+    
+    public void ehGrande(){
+        if(paginas>200){
+            System.out.println("é grande o livro");
+        }else{
+            System.out.println("Não é grande");
+        }
+    }
+    
+     public void ehGrande(boolean ehInfantil){
+        if(paginas>13){
+            System.out.println("é grande o livro infantil");
+        }else{
+            System.out.println("Não é um livro infantil grande");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+public class Produto {
+    public String nome;
+    public double preco;
+    
+
+    
+    public Produto(String nome, double preco){
+        this.nome = nome;
+        this.preco = preco;
+    }
+    
+    public void ehCaro (){
+        if(preco>100){
+            System.out.println("Produto caro.");
+        }else{
+            System.out.println("Produto barato.");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+public class Eletronico extends Produto {
+    public int voltagem;
+
+    public Eletronico(int voltagem, String nome, double preco) {
+        super(nome, preco);
+        this.voltagem = voltagem;
+    }
+    
+    
+    @Override //Sobescrita
+    public void ehCaro (){
+        if(preco>200){
+            System.out.println("Eletronico caro.");
+        }else{
+            System.out.println("Eletronico barato.");
+        }
+    }
+    
+}
