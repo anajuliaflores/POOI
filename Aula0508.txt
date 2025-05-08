@@ -1,0 +1,135 @@
+
+package com.mycompany.aula0508;
+
+public class Aula0508 {
+
+    public static void main(String[] args) {
+        System.out.println("Exercício de Revisão");
+        
+        Conta c1 = new Conta(1000);
+        c1.Saque(155);
+    }
+}
+
+
+
+
+
+
+package com.mycompany.aula0508;
+
+public class Conta {
+    public double saldo;
+    
+    public Conta(double saldo){
+        this.saldo = saldo;
+    }
+    
+    public void Saque(double valor){
+       saldo -= valor;
+       saldo -= 0.00;
+       
+       System.out.println("Sua conta está em um total de: " + saldo);
+    }
+    
+    public void Depositar(double valor){
+        saldo += valor;
+        System.out.println("Sua conta está em um total de: " + saldo);
+    }
+    
+    public void AplicarRendimento(){
+        saldo = (0.00/saldo) * 100;
+        
+    }
+}
+
+
+
+
+
+
+package com.mycompany.aula0508;
+
+import java.util.List;
+
+public class Cliente {
+    private String nome;
+    private String cpf;
+    private int telefone;
+    private String endereco;
+    
+    private List<Conta> listaConta;
+     
+   
+    public Cliente (String nome, String cpf, int telefone, String endereco){
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
+    
+    
+    public void AdicionarConta(Conta conta){
+        this.listaConta.add(conta);
+        
+        
+    
+    }
+}
+
+
+
+
+
+package com.mycompany.aula0508;
+
+public class ContaCorrente extends Conta {
+
+    public ContaCorrente(double saldo) {
+        super(saldo);
+    }
+
+
+    @Override
+    public void Saque(double valor){
+       saldo -= valor;
+       saldo -= 5.00;
+       
+       System.out.println("Sua conta está em um total de: " + saldo);
+    }
+    
+    @Override
+     public void AplicarRendimento(){
+        saldo = (1.20/saldo) * 100;
+        
+    }
+}
+
+
+
+
+
+
+
+package com.mycompany.aula0508;
+
+public class ContaPoupanca extends Conta{
+    
+    public ContaPoupanca(double saldo){
+        super(saldo);
+    }
+    
+    @Override
+    public void Saque(double valor){
+       saldo -= valor;
+       saldo -= 15.00;
+       
+       System.out.println("Sua conta está em um total de: " + saldo);
+    }
+    
+    @Override
+     public void AplicarRendimento(){
+        saldo = (0.50/saldo) * 100;
+        
+    }
+}
